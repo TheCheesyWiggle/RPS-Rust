@@ -1,5 +1,4 @@
 use std::io;
-use std::io::*;
 use rand::Rng;
 
 fn main() {
@@ -11,10 +10,11 @@ fn main() {
 }
 
 fn rules(){
-    println!("--------------------------------------------------\nRULES\n--------------------------------------------------\nEnter: \n\t R = Rock \n\t P = Paper \n\t S = Scissors\n-------------------------------------------------- \nThe computer will reveal its choice and the winner");
+    println!("--------------------------------------------------\nRULES\n--------------------------------------------------\nEnter: \n\t 1 = Rock \n\t 2 = Paper \n\t 3 = Scissors\n-------------------------------------------------- \nThe computer will reveal its choice and the winner");
 }
 
 fn user_input()-> String{
+    println!("PLease enter your value:");
     let mut input = String::new();
     io::stdin().read_line(&mut input).expect("error: unable to read user input");
     return input
@@ -25,22 +25,21 @@ fn user_choice()->u8{
     let mut input = user_input();
     let mut choice:u8 = 3;
 
-
-
     //if statement too convert the user choice into the same data type as ai
-    if input == "r" {
+    if input == "1"{
         choice = 0;
     }
-    else if  input == "p"{
+    else if input == "2"{
         choice = 1;
     }
-    else if  input == "s"{
+    else if  input == "3"{
         choice = 2;
     }
     else{
         println!("Error");
     }
-    println!("{},{}",choice,input);
+
+    println!("choice+input: {},{}",choice,input);
     //returns choice
     return choice
 }
@@ -98,7 +97,7 @@ fn result(ai_choice: u8 , user_choice: u8) {
         }
     }
 
-    println!("{},{}",ai_choice,user_choice);
+    println!("ai+user choice: {},{}",ai_choice,user_choice);
 
     match win{
         1 => println!("Well Done you have won!"),
